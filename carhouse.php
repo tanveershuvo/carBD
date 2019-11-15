@@ -17,6 +17,8 @@
 		<meta charset="UTF-8">
 		<!-- Site Title -->
 		<title>Car Rentals</title>
+		<link rel="stylesheet" href="pace/themes/red/pace-theme-flash.css" />
+		<script src="pace/pace.js"></script>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
@@ -61,10 +63,10 @@
 						  if (isset($_POST['search'])){
 							$class=$_POST['class'];
 							$price = $_POST['price'];
-							$sql = "select * from sale_car_details WHERE class='$class' AND price < '$price'";
+							$sql = "select * from sale_car_details WHERE class='$class' AND price < '$price' AND isSold = 0";
 							$resultData=$conn->query($sql);
 							  }else if(!isset($_POST['search'])){
-						  $sql = "select * from sale_car_details";
+						  $sql = "select * from sale_car_details WHERE isSold = 0";
 						  $resultData=$conn->query($sql);
 						  }
 						  if($resultData->num_rows > 0){

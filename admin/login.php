@@ -33,9 +33,10 @@
 			$conn = connect();
 			if(isset($_POST['submit'])){
 				$mail 		= $_POST['email'];
-				$password 	= $_POST['password'];
-        echo $password;
-				$sql = "SELECT * FROM `renter_details` WHERE `email`='$mail' AND `password`='$password'";
+				$password 	= md5($_POST['password']);
+        //echo $password;
+				$sql = "SELECT * FROM `renter_details` WHERE `email`='$mail' AND `password`='$password' AND isAccepted = 1";
+        //echo $sql;exit;
 				$result = $conn->query($sql);
 				if($result->num_rows > 0){
 					$_SESSION['isLoggedIn'] = TRUE;
@@ -46,7 +47,7 @@
 							$_SESSION['phone']=$row['phone'];
 							$_SESSION['role']=$row['role'];
             }
-            echo "<script>window.location.href='dashboard.php'</script>";
+            echo "<script>window.location.href='dashboard'</script>";
           } else {
             echo "<script>window.location.href='login.php'</script>";
           }
@@ -69,7 +70,7 @@
         <input type="password" name="password" class="form-control" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-        
+
         <!-- /.col -->
         <div class="form-group">
           <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>

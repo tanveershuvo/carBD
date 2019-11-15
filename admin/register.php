@@ -44,12 +44,14 @@ if (isset($_POST['submit'])){
                                      }
   $cus_id = generateRandomString();
   $name   = $_POST['name'];
+  $tin   = $_POST['tin'];
+  $com   = $_POST['com_name'];
   $email  = $_POST['email'];
   $phone  = $_POST['phone'];
-  $password = $_POST['password'];
+  $password = md5($_POST['password']);
 
-  $sql = "INSERT INTO `renter_details`(`renter_id`, `name`, `email`, `phone`, `password`)
-          VALUES ('$cus_id','$name','$email','$phone','$password')";
+  $sql = "INSERT INTO `renter_details`(`renter_id`,company_name,tin, `name`, `email`, `phone`, `password`)
+          VALUES ('$cus_id','$com','$tin','$name','$email','$phone','$password')";
    //echo $sql;exit;
   if ($conn->query($sql)){
     echo "<script>window.location.href='login.php'</script>";
@@ -70,8 +72,16 @@ if (isset($_POST['submit'])){
 
     <form method="post">
       <div class="form-group has-feedback">
+        <input type="text" class="form-control" name="com_name" placeholder="Company Name" required>
+        <span class="glyphicon glyphicon-th-large form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
         <input type="text" class="form-control" name="name" placeholder="Name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" name="tin" placeholder="TIIN Number" required>
+        <span class="glyphicon glyphicon-random form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="email" class="form-control" name="email" placeholder="Email" required>
@@ -79,13 +89,13 @@ if (isset($_POST['submit'])){
       </div>
 	  <div class="form-group has-feedback">
         <input type="text" class="form-control" name="phone" placeholder="Phone" required>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" name="password" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-     
+
         <!-- /.col -->
         <div class=" form-group">
           <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Register</button>

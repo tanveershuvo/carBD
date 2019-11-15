@@ -27,7 +27,7 @@ $r_id = $_SESSION['renter_id'];
 
 /* 1st Image upload  */
 if(isset($_FILES["imageup1"]["name"]) && $_FILES["imageup1"]["name"] != ''){
-  $target_dir = "images/";
+  $target_dir = "../img/";
   $img1 = date('YmdHis_');
   $img1 .= basename($_FILES["imageup1"]["name"]);
   $target_file = $target_dir . $img1;
@@ -68,7 +68,7 @@ $sql = "INSERT INTO `car_details`(`car_id`, `car_name`,`price`, `car_details`, `
 
 
 if ($conn->query($sql)){
-  echo "<script>window.location.href='dashboard.php'</script>";
+  echo "<script>window.location.href='viewRent'</script>";
 }else{
   echo "<script>window.location.href='404.php'</script>";
 }

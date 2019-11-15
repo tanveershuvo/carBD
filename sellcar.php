@@ -13,6 +13,8 @@
   <meta name="keywords" content="">
   <!-- meta character set -->
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="pace/themes/red/pace-theme-flash.css" />
+	<script src="pace/pace.js"></script>
   <!-- Site Title -->
   <title>Car Rentals</title>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
@@ -35,14 +37,9 @@
   <?php
   include_once 'dbCon.php';
   $conn= connect();
-  if(isset($_POST['submit'])){
-    $title = $_POST['title'];
-    $blog = $_POST['blog'];
-    $date = date('d-M-Y');
-    $cus_id = $_SESSION['cus_id'];
-    $name = $_SESSION['name'];
-    $sql="INSERT INTO `blog`( `title`, `blog`, `date`, `cus_id`,`name`)
-      VALUES ('$title','$blog','$date','$cus_id','$name')";
+  if(isset($_POST['sold'])){
+    $s_id = $_POST['sell_id'];
+    $sql="UPDATE `sale_car_details` SET isSold = 1 WHERE car_id = '$s_id'";
     $conn->query($sql);
   }
   ?>
@@ -103,7 +100,15 @@
                   <td><?=$view['kilo']?></td>
                   <td><?=$view['reg_date']?></td>
                   <td> <img src="img/<?=$view['img1']?>" alt="" height="80px" width="120px" ></td>
-                  <td>SOLD</td>
+                  <td><?php  if(($view['isSold']) == 1){
+                    echo 'SOLD';
+                  }elseif(($view['isSold']) == 0){ ?>
+                    <form method="post" >
+                    <input type="hidden"  name="sell_id" value="<?=$view['car_id']?>">
+                    <button type="submit"  name="sold"   class="btn btn-success btn-block">Sold</button>
+                  </form>
+                <?php } ?>
+                </td>
 
               </tr>
             <?php } }else{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 05:44 PM
+-- Generation Time: Nov 15, 2019 at 02:42 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.0.21
 
@@ -80,12 +80,13 @@ CREATE TABLE `booking_details` (
   `return_date` varchar(20) NOT NULL,
   `class` varchar(50) NOT NULL,
   `total_day` int(5) NOT NULL,
-  `total_bill` float(10,2) NOT NULL,
+  `total_bill` int(20) NOT NULL,
   `price` float(10,2) NOT NULL,
   `pickup_location` varchar(20) NOT NULL,
   `booking_date` varchar(20) NOT NULL,
   `advance_payment` varchar(50) NOT NULL,
   `payment_status` varchar(50) NOT NULL,
+  `isCancel` int(2) NOT NULL DEFAULT '0',
   `cus_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -93,9 +94,9 @@ CREATE TABLE `booking_details` (
 -- Dumping data for table `booking_details`
 --
 
-INSERT INTO `booking_details` (`booking_id`, `car_id`, `pick_date`, `return_date`, `class`, `total_day`, `total_bill`, `price`, `pickup_location`, `booking_date`, `advance_payment`, `payment_status`, `cus_id`) VALUES
-('175082', 41668, '11/15/2019', '11/15/2019', 'Compact', 1, 2500.00, 2500.00, 'Azimpur', '11/14/2019', '750.00', '', 327591),
-('835523', 41668, '11/19/2019', '11/20/2019', 'Compact', 2, 5000.00, 2500.00, 'Mohammodpur', '11/14/2019', '1500.00', 'VALID', 327591);
+INSERT INTO `booking_details` (`booking_id`, `car_id`, `pick_date`, `return_date`, `class`, `total_day`, `total_bill`, `price`, `pickup_location`, `booking_date`, `advance_payment`, `payment_status`, `isCancel`, `cus_id`) VALUES
+('175082', 41668, '11/15/2019', '11/15/2019', 'Compact', 1, 2500, 2500.00, 'Azimpur', '11/14/2019', '2500', '', 0, 327591),
+('835523', 41668, '11/19/2019', '11/20/2019', 'Compact', 2, 5000, 2500.00, 'Mohammodpur', '11/14/2019', '5000', 'VALID', 1, 327591);
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,12 @@ CREATE TABLE `car_details` (
 --
 
 INSERT INTO `car_details` (`car_id`, `car_name`, `price`, `car_details`, `class`, `fuel`, `door`, `gearbox`, `driver_name`, `driver_phone`, `img1`, `renter_id`) VALUES
-(41668, 'Toyota', 2500.00, 'back camera Options- Excellent Air Conditioner,Push Start, Sun Roof, Cruise Control,DVD player, Back Camera Navigation, Projection Head light,Fog Light, Leather Interior, Power steering, Disk Brake, Power windows & mirror, 4abs, Air bag, Center , Tempered glass, Alloy Wheels, All power, All papers are up to date.', 'Compact', 'Petrol', '1', 'Automatic', 'Mikel', '0123654789', '20190720013441_20190324104846_car-6.jpg', 15432);
+(41132, 'BMW', 2600.00, 'jhklkl', 'Compact', 'Petrol', '1', 'Automatic', 'Motaleb', '016813', '', 15432),
+(41668, 'Toyota', 2500.00, 'back camera Options- Excellent Air Conditioner,Push Start, Sun Roof, Cruise Control,DVD player, Back Camera Navigation, Projection Head light,Fog Light, Leather Interior, Power steering, Disk Brake, Power windows & mirror, 4abs, Air bag, Center , Tempered glass, Alloy Wheels, All power, All papers are up to date.', 'Compact', 'Petrol', '1', 'Automatic', 'Mikel', '0123654789', 'b3.jpg', 15432),
+(52163, 'BMW', 2600.00, 'jhklkl', 'Compact', 'Petrol', '1', 'Automatic', 'Motaleb', '0168135656', '20191115124726_images.jfif', 15432),
+(162925, 'sssssss', 22222.00, 'ssssssssss', 'Compact', 'Petrol', '1', 'Automatic', 'ssssss', '22222222', '20191115125014_74528633_573350316804838_4614012039570915328_n.jpg', 15432),
+(342453, 'rger', 23333.00, '22fd', 'Compact', 'Petrol', '1', 'Automatic', 'df', '11111', '20191115124805_images.jfif', 15432),
+(493795, 'BMW', 2600.00, 'jhklkl', 'Compact', 'Petrol', '1', 'Automatic', 'Motaleb', '0168135656', '20191115124700_images.jfif', 15432);
 
 -- --------------------------------------------------------
 
@@ -133,21 +139,22 @@ INSERT INTO `car_details` (`car_id`, `car_name`, `price`, `car_details`, `class`
 
 CREATE TABLE `renter_details` (
   `renter_id` int(20) NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `tin` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `role` int(5) NOT NULL DEFAULT '0'
+  `password` varchar(255) NOT NULL,
+  `isAccepted` int(5) NOT NULL DEFAULT '0',
+  `role` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `renter_details`
 --
 
-INSERT INTO `renter_details` (`renter_id`, `name`, `email`, `phone`, `password`, `role`) VALUES
-(15432, 'X', 'x@g.com', '1823665656', '123', 1),
-(17582, 'ss', 't@j.com', '456', '456', 0),
-(351077, 'a', 'a@gmail.com', '016825852', '123456', 0);
+INSERT INTO `renter_details` (`renter_id`, `company_name`, `tin`, `name`, `email`, `phone`, `password`, `isAccepted`, `role`) VALUES
+(441915, 'Ta', '123456', 'tanveer', 'tanveershuvos@gmail.com', '01683182337', 'e10adc3949ba59abbe56e057f20f883e', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -167,6 +174,7 @@ CREATE TABLE `sale_car_details` (
   `kilo` int(50) NOT NULL,
   `reg_date` varchar(15) NOT NULL,
   `img1` varchar(250) NOT NULL,
+  `isSold` int(5) NOT NULL DEFAULT '0',
   `seller_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -174,9 +182,9 @@ CREATE TABLE `sale_car_details` (
 -- Dumping data for table `sale_car_details`
 --
 
-INSERT INTO `sale_car_details` (`car_id`, `car_name`, `price`, `car_details`, `class`, `fuel`, `door`, `gearbox`, `kilo`, `reg_date`, `img1`, `seller_id`) VALUES
-(665389, 'Prado Land Cruiser', 3000000.00, 'back camera Options- Excellent Air Conditioner,Push Start, Sun Roof, Cruise Control,DVD player, Back Camera Navigation, Projection Head light,Fog Light, Leather Interior, Power steering, Disk Brake, Power windows & mirror, 4abs, Air bag, Center , Tempered glass, Alloy Wheels, All power, All papers are up to date.', 'Compact', 'Petrol', '1', 'Automatic', 2344, '2019-07-08', 'b2.jpg', 327591),
-(849349, 'ds', 2222222.00, 'dddddd', 'Supermini', 'Diesel', '3', 'Manual', 222222, '2019-11-14', '20191114104520_about-img.jpg', 327591);
+INSERT INTO `sale_car_details` (`car_id`, `car_name`, `price`, `car_details`, `class`, `fuel`, `door`, `gearbox`, `kilo`, `reg_date`, `img1`, `isSold`, `seller_id`) VALUES
+(665389, 'Prado Land Cruiser', 3000000.00, 'back camera Options- Excellent Air Conditioner,Push Start, Sun Roof, Cruise Control,DVD player, Back Camera Navigation, Projection Head light,Fog Light, Leather Interior, Power steering, Disk Brake, Power windows & mirror, 4abs, Air bag, Center , Tempered glass, Alloy Wheels, All power, All papers are up to date.', 'Compact', 'Petrol', '1', 'Automatic', 2344, '2019-07-08', 'b2.jpg', 0, 327591),
+(849349, 'ds', 2222222.00, 'dddddd', 'Supermini', 'Diesel', '3', 'Manual', 222222, '2019-11-14', '20191114104520_about-img.jpg', 1, 327591);
 
 -- --------------------------------------------------------
 
@@ -261,6 +269,12 @@ ALTER TABLE `blog_comments`
 --
 ALTER TABLE `booking_details`
   ADD PRIMARY KEY (`booking_id`);
+
+--
+-- Indexes for table `car_details`
+--
+ALTER TABLE `car_details`
+  ADD PRIMARY KEY (`car_id`);
 
 --
 -- Indexes for table `renter_details`

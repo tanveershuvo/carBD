@@ -1,4 +1,4 @@
-
+</head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -28,8 +28,8 @@
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs"><?=$_SESSION['name']?></span>
             </a>
-		  </li>
-              
+		        </li>
+
               <li class="user-footer">
                   <a href="logout.php" class="btn btn-success btn-flat">Sign out</a>
               </li>
@@ -42,26 +42,34 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-     
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+        <?php if(($_SESSION['role']) == 1){ ?>
+        <li>
+        <a href="dashboard">
+          <i class="fa fa-th"></i> <span>Reports</span>
+        </a>
+      </li>
+        <li>
+        <a href="registration_request">
+          <i class="fa fa-th"></i> <span>Register Request</span>
+        </a>
+      </li>
+    <?php }else{ ?>
 		 <li>
-          <a href="dashboard.php">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <a href="booking_details">
+            <i class="fa fa-dashboard"></i> <span>All Bookings </span>
           </a>
         </li>
-		<li>
-          <a href="carsell.php">
-            <i class="fa fa-files-o"></i> <span>Add car sell info</span>
+
+		      <li>
+          <a href="viewRent">
+            <i class="fa fa-th"></i> <span>Your Renting Cars</span>
           </a>
         </li>
-		<li>
-          <a href="rentcar.php">
-            <i class="fa fa-th"></i> <span>Add rent car info</span>
-          </a>
-        </li>
-       
+      <?php } ?>
       </ul>
     </section>
     <!-- /.sidebar -->

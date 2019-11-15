@@ -67,6 +67,7 @@ function ealert(){
 					if($result->num_rows > 0){
 						$_SESSION['isLoggedIn'] = TRUE;
 						foreach($result as $row){
+								
 								$_SESSION['cus_id']=$row['cus_id'];
 								$_SESSION['name']=$row['name'];
 								$_SESSION['email']=$row['email'];

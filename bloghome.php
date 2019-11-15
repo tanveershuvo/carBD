@@ -15,15 +15,16 @@
 		<meta charset="UTF-8">
 		<!-- Site Title -->
 		<title>Car Rentals</title>
-
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<link rel="stylesheet" href="pace/themes/red/pace-theme-flash.css" />
+		<script src="pace/pace.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
 			CSS
 			============================================= -->
 			<link rel="stylesheet" href="css/linearicons.css">
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/nice-select.css">			
+			<link rel="stylesheet" href="css/nice-select.css">
 			<link rel="stylesheet" href="css/magnific-popup.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
@@ -45,20 +46,20 @@
 		}
 		?>
 			<!-- start banner Area -->
-			<section class="banner-area relative" id="home">	
+			<section class="banner-area relative" id="home">
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Blog Home				
-							</h1>	
+								Blog Home
+							</h1>
 							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="blog-home.html"> Blog Home</a></p>
-						</div>											
+						</div>
 					</div>
 				</div>
 			</section>
-			<!-- End banner Area -->	
+			<!-- End banner Area -->
 			<!-- Start commentform Area -->
 			 <?php if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']==true){ ?>
                             <section class="commentform-area pt-80">
@@ -70,12 +71,12 @@
                                         </div>
                                         <div class="col-lg-8 col-md-6">
                                             <textarea class="form-control mb-10" name="blog" cols="140" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Write Blog Content here....'"  rows="5" placeholder="Write Blog Content here...." required></textarea>
-										
+
 											<input type="submit" class="primary-btn mt-20" name="submit" value="POST">
                                         </div>
                                     </div>
 									</form>
-                                </div>    
+                                </div>
                             </section>
             <!-- End commentform Area -->
 			<?php } ?>
@@ -98,7 +99,7 @@
 							<form method="POST" action="blogdetails.php">
 								<input type="hidden" name="id" value="<?=$id?>">
 									<div class="single-post">
-									
+
 										<ul class="tags">
 											<li>Posted</li>
 											<li>By</li>
@@ -122,32 +123,30 @@
 								<hr>
 						</div>
 					<?php } ?>
-							
+
 			</section>
 			<!-- End blog-posts Area -->
-			
 
-			<?php include_once 'include/footer.php'; ?>		
+
+			<?php include_once 'include/footer.php'; ?>
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script src="js/vendor/bootstrap.min.js"></script>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>			
-  			<script src="js/easing.min.js"></script>			
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  			<script src="js/easing.min.js"></script>
 			<script src="js/hoverIntent.js"></script>
-			<script src="js/superfish.min.js"></script>	
+			<script src="js/superfish.min.js"></script>
 			<script src="js/jquery.ajaxchimp.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>	
-			<script src="js/owl.carousel.min.js"></script>			
+			<script src="js/jquery.magnific-popup.min.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
 			<script src="js/jquery.sticky.js"></script>
-			<script src="js/jquery.nice-select.min.js"></script>	
+			<script src="js/jquery.nice-select.min.js"></script>
 			<script src="js/waypoints.min.js"></script>
-			<script src="js/jquery.counterup.min.js"></script>					
-			<script src="js/parallax.min.js"></script>		
-			<script src="js/mail-script.js"></script>	
-			<script src="js/main.js"></script>	
+			<script src="js/jquery.counterup.min.js"></script>
+			<script src="js/parallax.min.js"></script>
+			<script src="js/mail-script.js"></script>
+			<script src="js/main.js"></script>
 		</body>
 	</html>
-
-
